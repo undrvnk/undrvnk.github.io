@@ -1,0 +1,46 @@
+.centered {
+    text-align: center; 
+}
+
+.navigation {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    right: 10px;
+}
+
+.navigation li {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    width: 100px; /* Adjust the width as needed */
+    text-align: center;
+}
+
+.navigation a:hover {
+    background-color: #f0f0f0;
+}
+
+head, body {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.container {
+    background-image: url('BG-HOME.gif'); /* URL of the background image */
+    background-size: cover; /* Scale the image to cover the entire container */
+    background-position: center; /* Center the image within the container */
+    width: 100%;
+    height: 100vh;
+}
