@@ -9,7 +9,7 @@
 }
 
 .navigation ul {
-    list-style: none;
+    list-style-type: none;
     display: flex;
     right: 10px;
 }
@@ -19,18 +19,28 @@
     padding: 0;
 }
 
+.navigation ul li {
+	display:inline-flex;
+	margin: 0.3em 1em;
+}
+
 .navigation a {
     display: block;
     text-decoration: none;
     color: #333;
-    padding: 10px 15px;
+    padding: 10px 05px;
     border: 1px solid #ccc;
-    width: 100px; /* Adjust the width as needed */
+    min-width: 100px; /* Set a base width */
     text-align: center;
+    flex: 1; /* Distribute available space evenly */
 }
 
 .navigation a:hover {
     background-color: #f0f0f0;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 head, body {
@@ -44,3 +54,75 @@ head, body {
     width: 100%;
     height: 100vh;
 }
+
+
+.li {
+    margin: 0;
+    padding: 0;
+}
+
+
+.margin {
+	margin-top: 70px;
+}
+
+.image {
+	max-width: 95%;
+	height: auto;
+}
+
+
+.placeholder {
+    background-color: #3498db;
+    border: 2px solid #000000;
+	width: 50%; 
+	display: table-cell;
+}
+
+.menu-icon {
+    display: none; /* Hide the icon by default */
+    cursor: pointer;
+}
+
+
+.navigation input[type="checkbox"],
+.navigation label {
+      display: none;
+    }
+@media (max-width: 1850px) {
+	.navigation input[type="checkbox"]:not(:checked) + ul {
+        display: none;
+      }
+    .navigation {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 0;
+        margin-right: 0;
+    }
+	.navigation label {
+		text-align: right;
+		display: block;
+        padding: 0.7em;
+        line-height: 1.6em;
+        align-self: center;
+	}
+    /* Because we are in mobile mode, we want to display it as a
+       vertical list */
+    .navigation ul {
+        display: block;
+    }
+    /* We have two lists: the first one are the always visibile items
+       in the menu bar. The second one is the one that will be hidden */
+    .navigation ul:last-child {
+        width: 100%;
+        flex-basis: 100%;
+		background-color: #ccc;
+    }
+    .navigation ul li {
+        margin-bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 0.5em;
+	}
+}
+
