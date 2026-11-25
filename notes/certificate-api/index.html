@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Certificate renewal windows — Jason Zhang</title>
+  <meta name="description" content="How a server-chosen renewal window spreads certificate load, and how an atomic write fixed a concurrent replace race." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="ca44a631-41f3-4961-ad91-c91c10b0c001"></script>
+</head>
+<body>
+<main class="note">
+  <nav class="top">
+    <a href="/">Work</a>
+    <a href="/resume/">Resume</a>
+  </nav>
+  <h1>Spreading certificate renewals, then fixing the race</h1>
+  <p class="sub">AWS Private Certificate Authority · SDE Intern · Sep – Dec 2026</p>
+
+  <p>Clients ask the certificate service when a certificate should renew. If every certificate gets the same moment, those renewals arrive together and spike the authority. The API I owned gives each certificate a server-chosen window, so clients come back spread out instead of all at once.</p>
+
+  <p>I joined a large Java codebase and had the feature from design through tests within a few weeks. The design covered the data model, what old clients would do, and how the service would behave under load. Two senior-engineer reviews signed off on it.</p>
+
+  <p>The lookup had to stay cheap. It is one secondary-index query plus one point read on a distributed NoSQL store, so the cost does not grow with how many certificates exist.</p>
+
+  <p>Parallel tests found the bug. Replacing a certificate was a read, a check, then a write. Sixteen concurrent replaces all passed the check, then collided and returned server errors. An atomic transactional write makes exactly one request win. The others fail cleanly instead of erroring.</p>
+
+  <p>I also shipped the tests that run a certificate-manager add-on on Kubernetes against the service. Each run creates a temporary cluster, installs the newest add-on releases, and checks an in-place upgrade. Cleanup deletes only the clusters from that run. An in-memory control-plane fake covers the same create, retry, and delete logic in unit tests, with no cloud account.</p>
+
+  <p class="back"><a href="/">Back to work</a></p>
+</main>
+</body>
+</html>

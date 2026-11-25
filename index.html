@@ -8,74 +8,15 @@
   <meta property="og:title" content="Jason Zhang" />
   <meta property="og:description" content="Computer Engineering at Georgia Tech, SDE Intern at AWS. Backend, cloud infrastructure, security, and LLM systems." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="stylesheet" href="/style.css" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="ca44a631-41f3-4961-ad91-c91c10b0c001"></script>
-  <style>
-    :root {
-      --bg: #fbfbfa;
-      --fg: #1c1c1c;
-      --muted: #666;
-      --line: #e4e4e0;
-      --accent: #2456d6;
-      --card: #fff;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111214;
-        --fg: #e8e8e6;
-        --muted: #9a9a96;
-        --line: #26272b;
-        --accent: #7aa2ff;
-        --card: #17181b;
-      }
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    main { max-width: 720px; margin: 0 auto; padding: 72px 24px 96px; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header h1 { font-size: 34px; letter-spacing: -0.5px; line-height: 1.2; }
-    header .sub { color: var(--muted); margin-top: 6px; }
-    .lede { margin-top: 20px; font-size: 17px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .btn {
-      display: inline-block; padding: 9px 16px; border-radius: 8px;
-      border: 1px solid var(--line); background: var(--card); color: var(--fg);
-      font-size: 15px; font-weight: 500;
-    }
-    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .btn:hover { text-decoration: none; filter: brightness(0.97); }
-
-    section { margin-top: 56px; }
-    h2 {
-      font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
-      color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 20px;
-    }
-    .item { margin-bottom: 28px; }
-    .item-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
-    .item h3 { font-size: 17px; font-weight: 600; }
-    .when { color: var(--muted); font-size: 14px; white-space: nowrap; }
-    .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
-    .item ul { margin: 8px 0 0 18px; }
-    .item li { margin-bottom: 4px; }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .tags.focus { margin-top: 18px; }
-    .tag { font-size: 13px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
-
-    .skills p { margin-bottom: 6px; }
-    .skills b { font-weight: 600; }
-
-    footer { margin-top: 64px; color: var(--muted); font-size: 14px; }
-  </style>
 </head>
 <body>
 <main>
+  <nav class="top">
+    <a href="/" aria-current="page">Work</a>
+    <a href="/resume/">Resume</a>
+  </nav>
   <header>
     <h1>Jason Zhang</h1>
     <p class="sub">Computer Engineering @ Georgia Tech '28 · SDE Intern @ AWS</p>
@@ -87,28 +28,28 @@
       <span class="tag">Backend &amp; APIs</span><span class="tag">Cloud Infrastructure</span><span class="tag">Kubernetes</span><span class="tag">Security &amp; PKI</span><span class="tag">LLM Agents</span>
     </div>
     <div class="actions">
-      <a class="btn primary" href="resume.pdf" target="_blank" data-umami-event="resume-click">Resume (PDF)</a>
+      <a class="btn primary" href="/resume/" data-umami-event="resume-click">Resume</a>
       <a class="btn" href="mailto:jzhang3497@gatech.edu" data-umami-event="email-click">jzhang3497@gatech.edu</a>
       <a class="btn" href="mailto:jasonz.txt@gmail.com" data-umami-event="gmail-click">jasonz.txt@gmail.com</a>
     </div>
   </header>
 
-  <section>
+  <section id="work">
     <h2>Experience</h2>
     <div class="item">
       <div class="item-head">
         <h3>Amazon Web Services — SDE Intern</h3>
         <span class="when">Sep – Dec 2026</span>
       </div>
-      <p class="meta">AWS Private Certificate Authority · Arlington, VA</p>
+      <p class="meta">Private Certificate Authority · Arlington, VA</p>
       <ul>
-        <li>Owned a new backend API feature end to end, from design doc through implementation and tests, within weeks of joining a large unfamiliar Java codebase</li>
-        <li>Wrote the technical design doc and took it through two senior-engineer review panels</li>
-        <li>Used DynamoDB transactions to make a write path correct under heavy concurrency, and fixed a race that surfaced under parallel requests</li>
-        <li>Validated protocol interoperability end to end against multiple open-source clients</li>
-        <li>Defined infrastructure in AWS CDK and am building end-to-end automated tests on Kubernetes (Amazon EKS)</li>
+        <li>Owned a certificate-lifecycle API from design through testing, within weeks of joining a large unfamiliar Java codebase</li>
+        <li>Wrote the design, weighed data-model and operational tradeoffs, and passed two senior-engineer reviews</li>
+        <li>Built a constant-time lookup on a distributed NoSQL store, then replaced a read-check-write race with an atomic transactional write so concurrent requests stay consistent</li>
+        <li>Shipped automated Kubernetes tests for a certificate add-on: temporary clusters, newest-release upgrades, tagged teardown, and an in-memory control-plane fake with full unit coverage</li>
       </ul>
-      <div class="tags"><span class="tag">Java</span><span class="tag">DynamoDB</span><span class="tag">AWS CDK</span><span class="tag">Kubernetes</span><span class="tag">PKI</span><span class="tag">JUnit</span></div>
+      <p class="more"><a href="/notes/certificate-api/" data-umami-event="aws-note-click">How the renewal window and the race fit together</a></p>
+      <div class="tags"><span class="tag">Java</span><span class="tag">Distributed NoSQL</span><span class="tag">Kubernetes</span><span class="tag">PKI</span><span class="tag">JUnit</span></div>
     </div>
   </section>
 
@@ -127,6 +68,7 @@
         <li>Implemented dynamic expert routing and arbitration across LLM agents, contributing to 87.5 Macro F1 (+5.3 over baseline)</li>
         <li>Built the evaluation pipeline benchmarking 4 LLM backbones on 2,000+ MIMIC-IV clinical cases</li>
       </ul>
+      <p class="more"><a href="/notes/camp/" data-umami-event="camp-note-click">Why routing replaced a majority vote</a></p>
       <div class="tags"><span class="tag">Python</span><span class="tag">vLLM</span><span class="tag">LangChain</span><span class="tag">PyTorch</span></div>
     </div>
     <div class="item">
@@ -172,8 +114,8 @@
   <section class="skills">
     <h2>Skills</h2>
     <p><b>Languages:</b> Java, Python, C, JavaScript, SQL</p>
-    <p><b>Backend &amp; Data:</b> REST APIs, DynamoDB, MongoDB, Flask, Django</p>
-    <p><b>Cloud &amp; Infrastructure:</b> AWS (CDK, EKS), Kubernetes, Docker, Linux, Nginx, GitHub Actions CI/CD</p>
+    <p><b>Backend &amp; Data:</b> REST APIs, distributed NoSQL, MongoDB, Flask, Django</p>
+    <p><b>Cloud &amp; Infrastructure:</b> Kubernetes, infrastructure as code, Docker, Linux, Nginx, GitHub Actions CI/CD</p>
     <p><b>Security:</b> PKI, X.509 certificates, ACME, certificate lifecycle automation</p>
     <p><b>ML &amp; LLMs:</b> PyTorch, vLLM, LangChain, multi-agent systems, RAG, reinforcement learning</p>
   </section>
